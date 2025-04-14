@@ -33,7 +33,7 @@ Cria uma classe para armazenar os dados do cliente. Logo após, ele insere nome 
 ### 2. **Catálogo de frutas**
 ```python
 Frutas = {
-    "1": {"nome": "Banana", "preço": 3.60},
+    "1": {"nome": "Banana", "preço": 3.60, "quantidade": 500},
     ...
 }
 ```
@@ -45,7 +45,7 @@ Um dicionário com 15 frutas, cada uma com seu nome e preço por unidade. É exi
 ```python
 carrinho = []
 ```
-O cliente escolhe os produtos pelo código, verifica se há estoque e informa a quantidade. Os itens são salvos no carrinho como um dicionário com `nome`, `preço` e `quantidade` `unidade`.
+O cliente escolhe os produtos pelo código, verifica se há estoque e informa a quantidade. Os itens são salvos no carrinho como um dicionário com `nome`, `preço`, `quantidade` e `unidade`.
 
 ---
 
