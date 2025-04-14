@@ -89,24 +89,30 @@ print('''Formas de pagamento:
 [ 3 ] 2x no cartão (sem juros)
 [ 4 ] 3x ou mais no cartão (20% de juros)''')
 
-pagamento = int(input("Informe a forma de pagamento: "))
-
-if pagamento == 1:
-    total = total_compra - (total_compra * 10 / 100)
-elif pagamento == 2:
-    total = total_compra - (total_compra * 5 / 100)
-elif pagamento == 3:
-    total = total_compra
-    parcela = total / 2
-    print(f"Sua compra será parcelada em 2x de R${parcela:.2f} SEM JUROS.")
-elif pagamento == 4:
-    total = total_compra + (total_compra * 20 / 100)
-    totalparc = int(input("Quantas parcelas? "))
-    parcela = total / totalparc
-    print(f"Sua compra será parcelada em {totalparc}x de R${parcela:.2f} COM JUROS.")
-else:
-    total = total_compra
-    print("OPÇÃO DE PAGAMENTO INVÁLIDA. Valor final sem desconto ou acréscimo.")
-
+while True:
+    pagamento = int(input("Informe a forma de pagamento: "))
+    if pagamento == 1:
+        total = total_compra - (total_compra * 10 / 100)
+        break
+    elif pagamento == 2:
+        total = total_compra - (total_compra * 5 / 100)
+        break
+    elif pagamento == 3:
+        total = total_compra
+        parcela = total / 2
+        print(f"Sua compra será parcelada em 2x de R${parcela:.2f} SEM JUROS.")
+        break
+    elif pagamento == 4:
+        total = total_compra + (total_compra * 20 / 100)
+        totalparc = int(input("Quantas parcelas? "))
+        parcela = total / totalparc
+        print(f"Sua compra será parcelada em {totalparc}x de R${parcela:.2f} COM JUROS.")
+        break
+    else:
+        total = total_compra
+        print("OPÇÃO DE PAGAMENTO INVÁLIDA. Insira a opção corretamente.")
+        continue
+    
+time.sleep(2)
 print(f"Sua compra de R${total_compra:.2f} vai custar R${total:.2f} no final.")
 print("Obrigado por comprar conosco! Volte sempre 🌱🍎")
