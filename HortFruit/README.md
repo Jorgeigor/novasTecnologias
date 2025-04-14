@@ -8,10 +8,11 @@ Este é um projeto básico de terminal que simula um sistema de vendas para uma 
 
 1. Dá boas-vindas ao cliente com uma breve mensagem.
 2. Coleta nome e CPF do cliente.
-3. Mostra um catálogo de frutas disponíveis com preços.
+3. Mostra um catálogo de frutas disponíveis com preços e unidades em estoque.
 4. Permite ao cliente selecionar frutas e quantidades, que são adicionadas ao carrinho.
 5. Mostra o carrinho com o total da compra.
-6. Finaliza a compra com uma opção de pagamento:
+6. Finaliza a compra com uma opção de pagamento:    
+   - Dinheiro ou cheque com desconto.
    - à vista com desconto,
    - parcelado sem juros,
    - ou parcelado com juros.
@@ -44,7 +45,7 @@ Um dicionário com 15 frutas, cada uma com seu nome e preço por unidade. É exi
 ```python
 carrinho = []
 ```
-O cliente escolhe os produtos pelo código e informa a quantidade. Os itens são salvos no carrinho como um dicionário com `nome`, `preço` e `quantidade`.
+O cliente escolhe os produtos pelo código, verifica se há estoque e informa a quantidade. Os itens são salvos no carrinho como um dicionário com `nome`, `preço` e `quantidade` `unidade`.
 
 ---
 
@@ -107,5 +108,5 @@ python hortifruit.py
 
 ## ✍️ Feito por
 
-Esse projeto foi desenvolvido como exercício prático e pode ser usado para apresentações, estudos ou como base para algo mais completo.
+Esse projeto foi desenvolvido como exercício prático na matéria de novas tecnologias, pelo desenvolvedor Jorge Igor e pode ser usado para apresentações, estudos ou como base para algo mais completo.
 

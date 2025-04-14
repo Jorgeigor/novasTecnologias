@@ -14,37 +14,54 @@ class Client:
 p = Client()
 p.name = input("Insira seu Nome: ")
 p.cpf = int(input("Insira seu CPF: "))
+
+while True:
+    nome = input("Insira seu Nome (Apenas Letras): ").strip()
+    if nome.replace(" ", "").isalpha():
+        p.name = nome
+        break
+    else:
+        print("Nome inválido. Tente outra vez.")
+
+while True:
+    cpf = input("Insira seu CPF (apenas números): ").strip()
+    if cpf.isdigit() and len(cpf) == 11:
+        p.cpf = cpf
+        break
+    else:
+        print("CPF inválido. Deve conter exatamente 11 dígitos numéricos.")
+
 p.get_Info()
 print(f"Olá {p.name}, iremos redirecionalo para o catálogo.")
 time.sleep(1)
 Frutas = {
-    "1": {"nome": "Banana", "preço": 3.60},
-    "2": {"nome": "Maçã", "preço": 2.50},
-    "3": {"nome": "Pera", "preço": 3.00},
-    "4": {"nome": "Melancia", "preço": 4.00},
-    "5": {"nome": "Uva", "preço": 5.50},
-    "6": {"nome": "Laranja", "preço": 2.20},
-    "7": {"nome": "Limão", "preço": 1.80},
-    "8": {"nome": "Abacaxi", "preço": 6.00},
-    "9": {"nome": "Manga", "preço": 3.90},
-    "10": {"nome": "Kiwi", "preço": 4.50},
-    "11": {"nome": "Mamão", "preço": 3.70},
-    "12": {"nome": "Morango", "preço": 7.50},
-    "13": {"nome": "Coco", "preço": 5.00},
-    "14": {"nome": "Goiaba", "preço": 2.80},
-    "15": {"nome": "Caqui", "preço": 3.40}
+    "1": {"nome": "Banana", "preço": 3.60, "unidade": 500},
+    "2": {"nome": "Maçã", "preço": 2.50, "unidade": 500},
+    "3": {"nome": "Pera", "preço": 3.00, "unidade": 500},
+    "4": {"nome": "Melancia", "preço": 4.00, "unidade": 500},
+    "5": {"nome": "Uva", "preço": 5.50, "unidade": 500},
+    "6": {"nome": "Laranja", "preço": 2.20, "unidade": 500},
+    "7": {"nome": "Limão", "preço": 1.80, "unidade": 500},
+    "8": {"nome": "Abacaxi", "preço": 6.00, "unidade": 500},
+    "9": {"nome": "Manga", "preço": 3.90, "unidade": 500},
+    "10": {"nome": "Kiwi", "preço": 4.50, "unidade": 500},
+    "11": {"nome": "Mamão", "preço": 3.70, "unidade": 500},
+    "12": {"nome": "Morango", "preço": 7.50, "unidade": 500},
+    "13": {"nome": "Coco", "preço": 5.00, "unidade": 500},
+    "14": {"nome": "Goiaba", "preço": 2.80, "unidade": 500},
+    "15": {"nome": "Caqui", "preço": 3.40, "unidade": 500}
 }
 
 def frutas_estoque():
     print("\nFRUTAS")
     for cod, produto in Frutas.items():
-        print(f"{cod}. {produto['nome']} - R${produto['preço']:.2f}")
+        print(f"{cod}. {produto['nome']} - R${produto['preço']:.2f} - Unidades:{produto['unidade']}")
         
 carrinho = []
 def mostrar_carrinho():
     if not carrinho:
         print("\nSeu carrinho está vazio.")
-        return
+        exit()
     print("\n----- CARRINHO -----")
     total = 0
     for item in carrinho:
@@ -66,6 +83,14 @@ while True:
             if quantidade <= 0:
                 print("Quantidade inválida.")
                 continue
+            estoque_disponivel = Frutas[cod]['unidade']
+            if quantidade > estoque_disponivel:
+                print(f"Desculpe, {estoque_disponivel} unidades em estoque.")
+                continue
+            if Frutas[cod]['unidade'] == 0:
+                print("Este produto encontra-se zerado no nosso estoque, devido a alta demanda. Selecione outro produto!")
+                continue
+            Frutas[cod]['unidade'] -= quantidade
             item = {
                 "nome": Frutas[cod]['nome'],
                 "preço": Frutas[cod]['preço'],
