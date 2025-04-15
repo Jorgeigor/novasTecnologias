@@ -12,8 +12,6 @@ class Client:
         print(f"Nome: {self.name}, CPF: {self.cpf}")
 
 p = Client()
-p.name = input("Insira seu Nome: ")
-p.cpf = int(input("Insira seu CPF: "))
 
 while True:
     nome = input("Insira seu Nome (Apenas Letras): ").strip()
